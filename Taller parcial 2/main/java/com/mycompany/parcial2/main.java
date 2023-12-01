@@ -89,17 +89,20 @@ public class main {
             String tipo = req.params(":tipo");
             int indice = Integer.parseInt(req.params(":indice"));
             
+            Calendar rightNow2 = Calendar.getInstance();
+            int hour2 = rightNow2.get(Calendar.HOUR_OF_DAY);
+            
+            
             if(tipo.equals("automovil") && indice <= 0 && indice < automoviles.size()){
-                Automovil vehiculo = (Automovil) automoviles.get(indice);
-                vehiculo.setHoraSalida(Calendar.HOUR_OF_DAY);
-            return gson.toJson(vehiculo);
-            } else if (tipo.equals("motocicleta")){
-               moto.setHoraSalida(Calendar.HOUR_OF_DAY);
-               return gson.toJson(moto);
+                automoviles.get(indice).setHoraSalida(hour2);
+            return gson.toJson(automoviles);
+            } else if (tipo.equals("motocicleta")&& indice <= 0 && indice < motos.size()){
+               motos.get(indice).setHoraSalida(hour2);
+               return gson.toJson(motos);
             }else {
                 return "Tipo de vehículo o índice incorrecto.";
             }
-        });
+          });
         
         
         get("/agregarAutomovil/:marca/:modelo/:placa/:numeroPuertas", (req, res) -> {

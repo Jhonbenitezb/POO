@@ -93,14 +93,15 @@ public class main {
             int hour2 = rightNow2.get(Calendar.HOUR_OF_DAY);
             
             
-            if(tipo.equals("automovil") && indice <= 0 && indice < automoviles.size()){
+            if(tipo.equals("automovil") && indice < automoviles.size()){
                 automoviles.get(indice).setHoraSalida(hour2);
             return gson.toJson(automoviles);
-            } else if (tipo.equals("motocicleta")&& indice <= 0 && indice < motos.size()){
+            }         
+            if (tipo.equals("motocicleta") && indice < motos.size()){
                motos.get(indice).setHoraSalida(hour2);
                return gson.toJson(motos);
             }else {
-                return "Tipo de vehículo o índice incorrecto.";
+            return "Tipo de vehículo o índice incorrecto.";
             }
           });
         
